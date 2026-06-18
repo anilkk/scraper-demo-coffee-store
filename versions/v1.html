@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northbound Coffee Roasters — Single Origin</title>
+<style>
+  :root { --ink:#2b1d14; --cream:#f7f1e8; --accent:#9c5b34; --line:#e4d8c8; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         background:var(--cream); color:var(--ink); }
+  header { padding:32px 24px 16px; text-align:center; border-bottom:1px solid var(--line); }
+  header h1 { margin:0; font-size:28px; letter-spacing:0.5px; }
+  header p { margin:6px 0 0; color:#7a6855; font-size:14px; }
+  .grid { max-width:920px; margin:32px auto; padding:0 24px;
+          display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+  .product-card { background:#fff; border:1px solid var(--line); border-radius:12px;
+                  padding:20px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .product-card .badge { display:inline-block; font-size:11px; text-transform:uppercase;
+                  letter-spacing:1px; color:var(--accent); margin-bottom:10px; }
+  .product-name { font-size:18px; margin:0 0 12px; }
+  .product-price { display:block; font-size:22px; font-weight:700; color:var(--accent); margin-bottom:8px; }
+  .meta { font-size:13px; color:#7a6855; }
+  .product-rating { font-weight:700; color:var(--ink); }
+  .product-reviews { color:#7a6855; }
+  footer { text-align:center; padding:24px; color:#9b8a76; font-size:12px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Northbound Coffee Roasters</h1>
+    <p>Small-batch single origin · roasted weekly in Portland, OR</p>
+  </header>
+
+  <main class="grid">
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Ethiopia Yirgacheffe</h2>
+      <span class="product-price">$19.50</span>
+      <div class="meta">
+        <span class="product-rating">4.8</span> ·
+        <span class="product-reviews">124 reviews</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Colombia Huila</h2>
+      <span class="product-price">$17.00</span>
+      <div class="meta">
+        <span class="product-rating">4.6</span> ·
+        <span class="product-reviews">89 reviews</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Sumatra Mandheling</h2>
+      <span class="product-price">$18.25</span>
+      <div class="meta">
+        <span class="product-rating">4.7</span> ·
+        <span class="product-reviews">156 reviews</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Guatemala Antigua</h2>
+      <span class="product-price">$16.75</span>
+      <div class="meta">
+        <span class="product-rating">4.5</span> ·
+        <span class="product-reviews">73 reviews</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Kenya AA Nyeri</h2>
+      <span class="product-price">$21.00</span>
+      <div class="meta">
+        <span class="product-rating">4.9</span> ·
+        <span class="product-reviews">201 reviews</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Brazil Cerrado</h2>
+      <span class="product-price">$15.50</span>
+      <div class="meta">
+        <span class="product-rating">4.4</span> ·
+        <span class="product-reviews">58 reviews</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>© Northbound Coffee Roasters · Demo store for scraping tutorial · Public sample page</footer>
+</body>
+</html>

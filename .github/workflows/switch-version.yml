@@ -1,0 +1,37 @@
+name: Switch store version
+
+# Manually flip the live store between the original (v1) and the
+# "redesigned" (v2) layout. Pushing the change triggers Vercel to
+# redeploy the SAME URL, so on camera the site "changes" on cue.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Which version to publish live"
+        required: true
+        default: "v2"
+        type: choice
+        options:
+          - v1
+          - v2
+
+jobs:
+  switch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Publish selected version as index.html
+        run: cp "versions/${{ github.event.inputs.version }}.html" index.html
+
+      - name: Commit and push (triggers Vercel redeploy)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Publish store ${{ github.event.inputs.version }}" || echo "No change to commit"
+          git push
