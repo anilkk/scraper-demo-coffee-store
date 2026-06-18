@@ -1,9 +1,13 @@
 # Northbound Coffee: demo store (Vercel + GitHub Action version switch)
 
+> **Currently live: `v1` (original layout).** This reflects what is committed to `index.html`. Flip it with the GitHub Action (see below).
+
 A tiny static store for the Scraper Studio Self-Healing video. The **same live URL**
 serves either the original layout (`v1`) or the "redesigned" layout (`v2`). You flip
 between them on camera by running a one-click GitHub Action. Vercel auto-redeploys the
 same URL, so the site appears to "change" live.
+
+Each version shows a color-coded flag in the top-right corner so it is obvious on camera which one is live: a green `v1 · original` badge or an orange `v2 · redesign` badge. The flag is decorative and sits outside the product cards, so it does not affect what your scraper extracts.
 
 ```
 index.html              ← the page Vercel serves (starts as v1)

@@ -33,9 +33,15 @@
   .coffee-item__meta { font-size:13px; color:#9bae9f; }
   .rating-score { font-weight:700; color:#ffd27d; }
   .review-count { color:#9bae9f; }
+  /* Demo-only version flag. Not part of the store layout; safe to ignore when scraping. */
+  .version-flag { position:fixed; top:12px; right:12px; z-index:999;
+                  font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+                  padding:7px 13px; border-radius:20px; letter-spacing:0.5px;
+                  color:#fff; background:#e0683a; box-shadow:0 2px 6px rgba(0,0,0,0.35); }
 </style>
 </head>
 <body>
+  <div class="version-flag">v2 · redesign</div>
   <header>
     <h1>Northbound Coffee Roasters</h1>
     <p>Small-batch single origin · roasted weekly in Portland, OR</p>
