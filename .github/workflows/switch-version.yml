@@ -25,13 +25,29 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v4
 
-      - name: Publish selected version as index.html
-        run: cp "versions/${{ github.event.inputs.version }}.html" index.html
+      - name: Publish selected version and sync README badge
+        run: |
+          V="${{ github.event.inputs.version }}"
+          cp "versions/${V}.html" index.html
+
+          if [ "$V" = "v2" ]; then
+            BADGE="live-v2%20redesign-e0683a"
+            HEADER="> **Currently live: \`v2\` (redesigned layout).** This reflects what is committed to \`index.html\`. Flip it with the GitHub Action (see below)."
+          else
+            BADGE="live-v1%20original-16a34a"
+            HEADER="> **Currently live: \`v1\` (original layout).** This reflects what is committed to \`index.html\`. Flip it with the GitHub Action (see below)."
+          fi
+
+          BADGE_LINE="[![Live version](https://img.shields.io/badge/${BADGE})](https://github.com/${{ github.repository }}/blob/main/index.html)"
+
+          # Rewrite the live-version badge line and the "Currently live" header line in place.
+          sed -i "s|.*img.shields.io/badge/live-.*|${BADGE_LINE}|" README.md
+          sed -i "s|^> \*\*Currently live:.*|${HEADER}|" README.md
 
       - name: Commit and push (triggers Vercel redeploy)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html README.md
           git commit -m "Publish store ${{ github.event.inputs.version }}" || echo "No change to commit"
           git push
