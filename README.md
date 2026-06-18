@@ -1,10 +1,10 @@
 # Northbound Coffee: demo store (Vercel + GitHub Action version switch)
 
 [![Switch store version](https://github.com/anilkk/scraper-demo-coffee-store/actions/workflows/switch-version.yml/badge.svg)](https://github.com/anilkk/scraper-demo-coffee-store/actions/workflows/switch-version.yml)
-[![Live version](https://img.shields.io/badge/live-v2%20redesign-e0683a)](https://github.com/anilkk/scraper-demo-coffee-store/blob/main/index.html)
+[![Live version](https://img.shields.io/badge/live-v1%20original-16a34a)](https://github.com/anilkk/scraper-demo-coffee-store/blob/main/index.html)
 [![Deploy](https://img.shields.io/badge/deploy-Vercel-black?logo=vercel)](https://vercel.com)
 
-> **Currently live: `v2` (redesigned layout).** This reflects what is committed to `index.html`. Flip it with the GitHub Action (see below).
+> **Currently live: `v1` (original layout).** This reflects what is committed to `index.html`. Flip it with the GitHub Action (see below).
 
 A tiny static store for the Scraper Studio Self-Healing video. The **same live URL**
 serves either the original layout (`v1`) or the "redesigned" layout (`v2`). You flip

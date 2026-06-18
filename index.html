@@ -4,113 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Northbound Coffee Roasters: Single Origin</title>
-<!--
-  v2 = the "redesign". Same products, but the HTML structure AND the visual
-  design changed: dark theme, new layout, and renamed classes
-  (product-card → coffee-item, product-name → coffee-item__title,
-  product-price → price-tag, etc.). This is what a real site ships overnight.
-  The v1 scraper now returns 0 results. Self-Healing fixes it.
--->
 <style>
-  :root { --ink:#e8e0d4; --bg:#1c241f; --panel:#27322b; --accent:#d98e54; --line:#3a473e; }
+  :root { --ink:#2b1d14; --cream:#f7f1e8; --accent:#9c5b34; --line:#e4d8c8; }
   * { box-sizing: border-box; }
   body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-         background:var(--bg); color:var(--ink); }
-  header { padding:40px 24px 24px; text-align:center; border-bottom:1px solid var(--line);
-           background:linear-gradient(180deg,#222d26,#1c241f); }
-  header h1 { margin:0; font-size:30px; letter-spacing:1px; color:#fff; }
-  header p { margin:8px 0 0; color:#9bae9f; font-size:14px; }
-  .catalog { max-width:960px; margin:36px auto; padding:0 24px;
-             display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px; }
-  .coffee-item { background:var(--panel); border:1px solid var(--line); border-radius:14px;
-                 padding:22px; box-shadow:0 4px 14px rgba(0,0,0,0.3);
-                 display:flex; flex-direction:column; gap:6px; }
-  .coffee-item__tag { display:inline-block; align-self:flex-start; font-size:10px;
-                 text-transform:uppercase; letter-spacing:1.5px; color:var(--bg);
-                 background:var(--accent); padding:3px 8px; border-radius:20px; margin-bottom:6px; }
-  .coffee-item__title { font-size:19px; margin:0 0 8px; color:#fff; }
-  .price-tag { display:block; font-size:24px; font-weight:700; color:var(--accent); margin-bottom:6px; }
-  .coffee-item__meta { font-size:13px; color:#9bae9f; }
-  .rating-score { font-weight:700; color:#ffd27d; }
-  .review-count { color:#9bae9f; }
+         background:var(--cream); color:var(--ink); }
+  header { padding:32px 24px 16px; text-align:center; border-bottom:1px solid var(--line); }
+  header h1 { margin:0; font-size:28px; letter-spacing:0.5px; }
+  header p { margin:6px 0 0; color:#7a6855; font-size:14px; }
+  .grid { max-width:920px; margin:32px auto; padding:0 24px;
+          display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+  .product-card { background:#fff; border:1px solid var(--line); border-radius:12px;
+                  padding:20px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .product-card .badge { display:inline-block; font-size:11px; text-transform:uppercase;
+                  letter-spacing:1px; color:var(--accent); margin-bottom:10px; }
+  .product-name { font-size:18px; margin:0 0 12px; }
+  .product-price { display:block; font-size:22px; font-weight:700; color:var(--accent); margin-bottom:8px; }
+  .meta { font-size:13px; color:#7a6855; }
+  .product-rating { font-weight:700; color:var(--ink); }
+  .product-reviews { color:#7a6855; }
+  footer { text-align:center; padding:24px; color:#9b8a76; font-size:12px; border-top:1px solid var(--line); }
   /* Demo-only version flag. Not part of the store layout; safe to ignore when scraping. */
   .version-flag { position:fixed; top:12px; right:12px; z-index:999;
                   font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
                   padding:7px 13px; border-radius:20px; letter-spacing:0.5px;
-                  color:#fff; background:#e0683a; box-shadow:0 2px 6px rgba(0,0,0,0.35); }
+                  color:#fff; background:#16a34a; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
 </style>
 </head>
 <body>
-  <div class="version-flag">v2 · redesign</div>
+  <div class="version-flag">v1 · original</div>
   <header>
     <h1>Northbound Coffee Roasters</h1>
     <p>Small-batch single origin · roasted weekly in Portland, OR</p>
   </header>
 
-  <main class="catalog">
-    <article class="coffee-item">
-      <span class="coffee-item__tag">Single Origin</span>
-      <h3 class="coffee-item__title">Ethiopia Yirgacheffe</h3>
-      <div class="coffee-item__pricing"><span class="price-tag">$19.50</span></div>
-      <div class="coffee-item__meta">
-        <span class="rating-score">4.8</span> ·
-        <span class="review-count">124 reviews</span>
+  <main class="grid">
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Ethiopia Yirgacheffe</h2>
+      <span class="product-price">$19.50</span>
+      <div class="meta">
+        <span class="product-rating">4.8</span> ·
+        <span class="product-reviews">124 reviews</span>
       </div>
-    </article>
+    </div>
 
-    <article class="coffee-item">
-      <span class="coffee-item__tag">Single Origin</span>
-      <h3 class="coffee-item__title">Colombia Huila</h3>
-      <div class="coffee-item__pricing"><span class="price-tag">$17.00</span></div>
-      <div class="coffee-item__meta">
-        <span class="rating-score">4.6</span> ·
-        <span class="review-count">89 reviews</span>
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Colombia Huila</h2>
+      <span class="product-price">$17.00</span>
+      <div class="meta">
+        <span class="product-rating">4.6</span> ·
+        <span class="product-reviews">89 reviews</span>
       </div>
-    </article>
+    </div>
 
-    <article class="coffee-item">
-      <span class="coffee-item__tag">Single Origin</span>
-      <h3 class="coffee-item__title">Sumatra Mandheling</h3>
-      <div class="coffee-item__pricing"><span class="price-tag">$18.25</span></div>
-      <div class="coffee-item__meta">
-        <span class="rating-score">4.7</span> ·
-        <span class="review-count">156 reviews</span>
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Sumatra Mandheling</h2>
+      <span class="product-price">$18.25</span>
+      <div class="meta">
+        <span class="product-rating">4.7</span> ·
+        <span class="product-reviews">156 reviews</span>
       </div>
-    </article>
+    </div>
 
-    <article class="coffee-item">
-      <span class="coffee-item__tag">Single Origin</span>
-      <h3 class="coffee-item__title">Guatemala Antigua</h3>
-      <div class="coffee-item__pricing"><span class="price-tag">$16.75</span></div>
-      <div class="coffee-item__meta">
-        <span class="rating-score">4.5</span> ·
-        <span class="review-count">73 reviews</span>
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Guatemala Antigua</h2>
+      <span class="product-price">$16.75</span>
+      <div class="meta">
+        <span class="product-rating">4.5</span> ·
+        <span class="product-reviews">73 reviews</span>
       </div>
-    </article>
+    </div>
 
-    <article class="coffee-item">
-      <span class="coffee-item__tag">Single Origin</span>
-      <h3 class="coffee-item__title">Kenya AA Nyeri</h3>
-      <div class="coffee-item__pricing"><span class="price-tag">$21.00</span></div>
-      <div class="coffee-item__meta">
-        <span class="rating-score">4.9</span> ·
-        <span class="review-count">201 reviews</span>
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Kenya AA Nyeri</h2>
+      <span class="product-price">$21.00</span>
+      <div class="meta">
+        <span class="product-rating">4.9</span> ·
+        <span class="product-reviews">201 reviews</span>
       </div>
-    </article>
+    </div>
 
-    <article class="coffee-item">
-      <span class="coffee-item__tag">Single Origin</span>
-      <h3 class="coffee-item__title">Brazil Cerrado</h3>
-      <div class="coffee-item__pricing"><span class="price-tag">$15.50</span></div>
-      <div class="coffee-item__meta">
-        <span class="rating-score">4.4</span> ·
-        <span class="review-count">58 reviews</span>
+    <div class="product-card">
+      <span class="badge">Single Origin</span>
+      <h2 class="product-name">Brazil Cerrado</h2>
+      <span class="product-price">$15.50</span>
+      <div class="meta">
+        <span class="product-rating">4.4</span> ·
+        <span class="product-reviews">58 reviews</span>
       </div>
-    </article>
+    </div>
   </main>
 
-  <footer style="text-align:center;padding:24px;color:#7e8f82;font-size:12px;border-top:1px solid #3a473e;">
-    © Northbound Coffee Roasters · Demo store for scraping tutorial · Public sample page
-  </footer>
+  <footer>© Northbound Coffee Roasters · Demo store for scraping tutorial · Public sample page</footer>
 </body>
 </html>
